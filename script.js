@@ -1,9 +1,20 @@
-const app= Vue.createApp({ 
+const app = Vue.createApp({
     data() {
         return {
             title: 'EcommerceVuejs',
+            productList: [
+                {
+                    
+                    favorite: false
+                },
+            ]
         }
     },
-    
-        
-}).mount("#app")
+    mounted() {
+        fetch('products.json')
+            .then((response) => response.json())
+            .then((data) => {
+                this.productList = data;
+            });
+    }
+}).mount("#app");

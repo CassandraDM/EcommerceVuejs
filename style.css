@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+#app {
+    display: flex;
+    justify-content: center;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap : 20px;
+    width: 820px;
+}
+
+.product-item {
+    width:400px;
+}
+
+.product-content {
+    position: relative;
+    height: fit-content;
+}
+
+.product-image {
+    width: 100%;
+}
+
+.product-price {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #E6BE76;
+ 
+    p {
+        margin:0;
+        padding: 5px 10px;
+        color: white;
+        font-family: "Roboto" ;
+    }
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+
+
+    button {
+        border:none;
+        width: 100%;
+        height:40px;
+    }
+
+    .favorite-button {
+        background-color: #ECB1B0;
+    }
+    .cart-button {
+        background-color: #C0E7F1;
+    }
+
+}
