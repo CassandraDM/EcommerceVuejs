@@ -1,13 +1,13 @@
+import { ProductCard } from "./components/product-card.js";
+
 const app = Vue.createApp({
+    components:{
+        'product-card':ProductCard
+    },
     data() {
         return {
             title: 'EcommerceVuejs',
-            productList: [
-                {
-                    
-                    favorite: false
-                },
-            ]
+            productList: []
         }
     },
     mounted() {
