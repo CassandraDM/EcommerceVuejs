@@ -12,23 +12,16 @@
         <nav></nav>
         <div class="product-list">
             <div v-for="(product, index) in productList" class="product-item">
-                <div class="product-content">
-                    <img :src="product.imgSrc" alt="" class="product-image" >
-                    <div class="product-price">                
-                        <p >{{ product.price }} €</p>
-                    </div>
-                </div>
-                <div class="button-container">
-                    <button class="favorite-button" @click="product.favorite = !product.favorite">
-                        <i :class="product.favorite ? 'fa-solid fa-heart' : 'fa-regular fa-heart'" style="color: #ffffff;"></i>
-                    </button>
-                    <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></button>
-                </div>  
+                <product-card 
+                    :id="product.id" 
+                    :price="product.price" 
+                    :src="product.imgSrc" 
+                ></product-card>
             </div>
             <div></div>
         </div>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js" type="module"></script>
 </body>
 </html>
