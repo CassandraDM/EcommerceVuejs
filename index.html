@@ -1,38 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
     <div id="app">
-        <nav>
-            <button class="nav-button" >
-                <i class="fa-solid fa-heart" style="color: #ffffff;"></i>
-                <div class="badge" v-if="addToFavorite"></div>
-            </button>
-            <button class="nav-button">
-               <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
-                <div class="badge"></div>
-            </button>
-        </nav>
-        <div class="product-list">
+      <nav>
+        <button class="nav-button">
+          <i class="fa-solid fa-heart" style="color: #ffffff"></i>
+          <div class="badge" v-if="addToFavorite"></div>
+        </button>
+        <button class="nav-button">
+          <i class="fa-solid fa-cart-shopping" style="color: #ffffff"></i>
+          <div class="badge" v-if="cartItems.length > 0"></div>
+        </button>
+      </nav>
+      <div class="container">
+        <div class="product-list-container">
+          <div class="product-list">
             <div v-for="(product, index) in productList" class="product-item">
-                <product-card 
-                    :id="product.id" 
-                    :price="product.price" 
-                    :src="product.imgSrc" 
-                    :like="product.like"
-                    @toggle-like="product.like = !product.like"
-                ></product-card>
+              <product-card
+                :id="product.id"
+                :price="product.price"
+                :src="product.imgSrc"
+                :like="product.like"
+                @toggle-like="product.like = !product.like"
+                @add-to-cart="cartItems.push(product)"
+              ></product-card>
             </div>
-            <div></div>
+          </div>
         </div>
+        <div class="cart-items">
+          <h1>Panier</h1>
+          <div v-for="(product, index) in cartItems">
+            <cart-card
+              :id="product.id"
+              :price="product.price"
+              :src="product.imgSrc"
+              :name="product.name"
+              @remove-from-cart="cartItems.splice(index, 1)"
+            ></cart-card>
+          </div>
+          <div class="cart-footer">
+            <h3 class="total-price">{{ totalPrice }}€</h3>
+            <button class="cart-button" v-if="cartItems.length > 0">
+              COMMANDER
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="script.js" type="module"></script>
-</body>
+  </body>
 </html>
