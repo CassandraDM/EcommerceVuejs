@@ -3,6 +3,7 @@ export const ProductCard = {
         id: Number,
         price: Number,
         src: String,
+        like: Boolean,
     },
     template:`
     <div :key="id" >
@@ -13,8 +14,8 @@ export const ProductCard = {
             </div>
         </div>
         <div class="button-container">
-            <button class="favorite-button" >
-                <i class="fa-regular fa-heart" style="color: #ffffff;"></i>
+            <button class="favorite-button" @click="$emit('toggle-like')" >
+            <i :class="like ? 'fa-solid fa-heart' : 'fa-regular fa-heart'" style="color: #ffffff;"></i>
             </button>
             <button class="cart-button"><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></button>
         </div>

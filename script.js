@@ -10,6 +10,11 @@ const app = Vue.createApp({
             productList: []
         }
     },
+    computed: {
+        addToFavorite() {
+            return this.productList.some((product) => product.like);
+        }
+    },
     mounted() {
         fetch('products.json')
             .then((response) => response.json())

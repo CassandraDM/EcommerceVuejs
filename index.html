@@ -9,13 +9,24 @@
 </head>
 <body>
     <div id="app">
-        <nav></nav>
+        <nav>
+            <button class="nav-button" >
+                <i class="fa-solid fa-heart" style="color: #ffffff;"></i>
+                <div class="badge" v-if="addToFavorite"></div>
+            </button>
+            <button class="nav-button">
+               <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
+                <div class="badge"></div>
+            </button>
+        </nav>
         <div class="product-list">
             <div v-for="(product, index) in productList" class="product-item">
                 <product-card 
                     :id="product.id" 
                     :price="product.price" 
                     :src="product.imgSrc" 
+                    :like="product.like"
+                    @toggle-like="product.like = !product.like"
                 ></product-card>
             </div>
             <div></div>
